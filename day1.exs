@@ -1,8 +1,4 @@
 defmodule Day1 do
-  def two_numbers([]) do
-    IO.puts("not found")
-  end
-
   def two_numbers([first | rest]) do
     res =
       Enum.find(rest, fn x ->
@@ -18,9 +14,6 @@ defmodule Day1 do
       {b, _} = Integer.parse(first)
       IO.puts("Two Numbers: #{a * b}")
     end
-  end
-
-  def three_numbers([]) do
   end
 
   def three_numbers([first | rest]) do
