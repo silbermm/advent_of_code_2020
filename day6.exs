@@ -63,8 +63,8 @@ defmodule Day6 do
   defp group_list_except(group, index) do
     group
     |> Enum.with_index()
-    |> Enum.filter(fn {el, idx} -> idx != index end)
-    |> Enum.map(fn {el, idx} -> el end)
+    |> Enum.filter(fn {_el, idx} -> idx != index end)
+    |> Enum.map(fn {el, _idx} -> el end)
   end
 
   defp unique_answers_per_group(groups) do
@@ -82,8 +82,7 @@ defmodule Day6 do
   end
 
   defp map_each_chunk_as_list(stream) do
-    {lines, _} = Enum.reduce(stream, {[], []}, &list_reducer/2)
-    Enum.reverse(lines)
+    Enum.reduce(stream, {[], []}, &list_reducer/2)
   end
 
   defp list_reducer("\n", {lst, str}), do: {[str | lst], []}
@@ -95,8 +94,7 @@ defmodule Day6 do
   end
 
   defp map_each_chunk(stream) do
-    {lines, _} = Enum.reduce(stream, {[], []}, &line_reducer/2)
-    Enum.reverse(lines)
+    Enum.reduce(stream, {[], []}, &line_reducer/2)
   end
 
   defp line_reducer("\n", {lst, str}), do: {[str | lst], ""}
